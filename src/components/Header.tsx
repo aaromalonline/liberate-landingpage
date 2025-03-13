@@ -37,7 +37,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/0dd35f29-1e21-4490-9888-e84bbdb276fc.png" 
             alt="Liberate - Freedom beyond barriers" 
-            className="h-12 md:h-14" 
+            className="h-10 md:h-12 opacity-90 mix-blend-multiply filter" 
           />
         </a>
 

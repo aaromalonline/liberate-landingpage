@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
@@ -18,7 +17,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/0dd35f29-1e21-4490-9888-e84bbdb276fc.png" 
                 alt="Liberate - Freedom beyond barriers" 
-                className="h-14 mb-4" 
+                className="h-12 mb-4 opacity-90 mix-blend-multiply filter" 
               />
             </a>
             <p className="text-sm text-gray-600 max-w-xs">
@@ -120,3 +119,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
