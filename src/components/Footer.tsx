@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
@@ -13,14 +14,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <a href="#" className="inline-block">
-              <img 
-                src="/lovable-uploads/0dd35f29-1e21-4490-9888-e84bbdb276fc.png" 
-                alt="Liberate - Freedom beyond barriers" 
-                className="h-12 mb-4 opacity-90 mix-blend-multiply filter" 
-              />
-            </a>
-            <p className="text-sm text-gray-600 max-w-xs">
+            <a href="#" className="text-2xl font-medium tracking-tighter">Liberate</a>
+            <p className="mt-4 text-sm text-gray-600 max-w-xs">
               Freedom beyond barriers. Breaking barriers, one motion at a time.
             </p>
             <div className="mt-6 flex space-x-4">
@@ -119,4 +114,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
