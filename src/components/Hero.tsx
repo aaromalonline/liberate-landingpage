@@ -21,27 +21,27 @@ const Hero = () => {
       imageContainerRef.current.style.transform = `translate3d(${x * -20}px, ${y * -20}px, 0) rotateX(${y * 5}deg) rotateY(${x * -5}deg)`;
     };
     
-    // Observer for entry animation
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100");
-            entry.target.classList.remove("opacity-0", "translate-y-10");
-          }
+    // Immediately show hero elements without waiting for intersection
+    const showHeroElements = () => {
+      if (heroRef.current) {
+        const elements = heroRef.current.querySelectorAll('.opacity-0');
+        elements.forEach((el) => {
+          el.classList.remove('opacity-0');
+          el.classList.remove('translate-y-10');
+          el.classList.add('opacity-100');
         });
-      },
-      { threshold: 0.1 }
-    );
+      }
+    };
+    
+    // Show elements immediately
+    showHeroElements();
     
     if (heroRef.current) {
-      observer.observe(heroRef.current);
       heroRef.current.addEventListener("mousemove", handleMouseMove);
     }
     
     return () => {
       if (heroRef.current) {
-        observer.unobserve(heroRef.current);
         heroRef.current.removeEventListener("mousemove", handleMouseMove);
       }
     };
@@ -50,12 +50,12 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen pt-24 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white"
+      className="hero-section relative min-h-screen pt-24 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white"
       id="hero"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center">
         {/* Hero content */}
-        <div className="w-full md:w-1/2 pt-12 md:pt-20 pb-12 space-y-6 md:space-y-8 opacity-0 translate-y-10 transition-all duration-700 delay-100">
+        <div className="w-full md:w-1/2 pt-12 md:pt-20 pb-12 space-y-6 md:space-y-8 transition-all duration-700 delay-100">
           <div className="inline-block py-1 px-3 rounded-full bg-liberation-100 text-liberation-700 text-xs font-medium tracking-wide animate-fade-in">
             Introducing Liberate
           </div>
@@ -102,7 +102,7 @@ const Hero = () => {
           ref={imageContainerRef}
           className="w-full md:w-1/2 flex justify-center hero-mouse-parallax-container"
         >
-          <div className="relative w-full max-w-md hero-mouse-parallax-child opacity-0 translate-y-10 transition-all duration-700 delay-300">
+          <div className="relative w-full max-w-md hero-mouse-parallax-child transition-all duration-700 delay-300">
             <div className="relative overflow-hidden rounded-lg shadow-elevated">
               <div className="aspect-w-4 aspect-h-3 bg-gray-100 relative">
                 <img
@@ -123,7 +123,7 @@ const Hero = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 translate-y-10 transition-all duration-700 delay-700">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-all duration-700 delay-700">
         <span className="text-xs text-gray-500 mb-2">Scroll to explore</span>
         <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-2 bg-gray-400 rounded-full animate-bounce"></div>

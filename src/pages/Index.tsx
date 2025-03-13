@@ -27,13 +27,28 @@ const Index = () => {
       }
     };
     
-    // Reveal animations on scroll
+    // Reveal animations on scroll - modified to ensure elements are visible
     const initRevealAnimations = () => {
+      // Initially show elements that should be visible without scrolling
+      document.querySelectorAll('.hero-section .opacity-0').forEach((el) => {
+        el.classList.remove('opacity-0');
+        el.classList.remove('translate-y-10');
+        el.classList.add('opacity-100');
+      });
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('revealed');
+              
+              // For hero section elements
+              const heroElements = entry.target.querySelectorAll('.opacity-0');
+              heroElements.forEach((el) => {
+                el.classList.remove('opacity-0');
+                el.classList.remove('translate-y-10');
+                el.classList.add('opacity-100');
+              });
             }
           });
         },
@@ -43,13 +58,37 @@ const Index = () => {
       document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
         observer.observe(el);
       });
+      
+      // Ensure the main sections are observed
+      document.querySelectorAll('section').forEach((el) => {
+        observer.observe(el);
+      });
     };
     
     document.addEventListener('click', handleAnchorClick);
-    initRevealAnimations();
+    
+    // Delay slightly to ensure DOM is fully loaded
+    setTimeout(initRevealAnimations, 100);
+    
+    // Show back-to-top button on scroll
+    const handleScroll = () => {
+      const backToTop = document.getElementById('back-to-top');
+      if (backToTop) {
+        if (window.scrollY > 500) {
+          backToTop.classList.add('opacity-100');
+          backToTop.classList.remove('translate-y-10');
+        } else {
+          backToTop.classList.remove('opacity-100');
+          backToTop.classList.add('translate-y-10');
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
     
     return () => {
       document.removeEventListener('click', handleAnchorClick);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -75,22 +114,6 @@ const Index = () => {
           <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
         </svg>
       </button>
-      
-      {/* Add JS for showing/hiding the back to top button on scroll */}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.addEventListener('scroll', function() {
-            const backToTop = document.getElementById('back-to-top');
-            if (window.scrollY > 500) {
-              backToTop.classList.add('opacity-100');
-              backToTop.classList.remove('translate-y-10');
-            } else {
-              backToTop.classList.remove('opacity-100');
-              backToTop.classList.add('translate-y-10');
-            }
-          });
-        `
-      }} />
     </div>
   );
 };
