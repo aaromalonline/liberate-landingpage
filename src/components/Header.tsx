@@ -32,9 +32,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#" 
-          className="text-2xl font-medium tracking-tighter transition-opacity duration-300 hover:opacity-80"
+          className="transition-opacity duration-300 hover:opacity-80"
         >
-          Liberate
+          <img 
+            src="/lovable-uploads/0dd35f29-1e21-4490-9888-e84bbdb276fc.png" 
+            alt="Liberate - Freedom beyond barriers" 
+            className="h-12 md:h-14" 
+          />
         </a>
 
         {/* Desktop navigation */}
