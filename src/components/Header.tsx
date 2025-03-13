@@ -39,13 +39,18 @@ const Header = () => {
 
         {/* Desktop navigation */}
         <nav className="hidden md:flex space-x-8">
-          {['Features', 'Technology', 'About', 'Contact'].map((item) => (
+          {[
+            { name: 'Features', id: 'features' },
+            { name: 'Technology', id: 'technology' },
+            { name: 'About', id: 'about' },
+            { name: 'Contact', id: 'contact' }
+          ].map((item) => (
             <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
+              key={item.name} 
+              href={`#${item.id}`}
               className="nav-link text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
-              {item}
+              {item.name}
             </a>
           ))}
         </nav>
@@ -87,14 +92,19 @@ const Header = () => {
         )}
       >
         <div className="px-6 py-4 space-y-3">
-          {['Features', 'Technology', 'About', 'Contact'].map((item) => (
+          {[
+            { name: 'Features', id: 'features' },
+            { name: 'Technology', id: 'technology' },
+            { name: 'About', id: 'about' },
+            { name: 'Contact', id: 'contact' }
+          ].map((item) => (
             <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
+              key={item.name} 
+              href={`#${item.id}`}
               className="block py-2 text-gray-700 hover:text-gray-900 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {item}
+              {item.name}
             </a>
           ))}
           <a 
