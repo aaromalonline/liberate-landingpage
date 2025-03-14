@@ -7,7 +7,7 @@ import { CheckCircle, Loader2, Mail, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Select } from './ui/select';
+import { FormSubmission, submitToGoogleSheets } from '@/utils/sheetsApi';
 import {
   Form,
   FormControl,
@@ -43,23 +43,33 @@ const CallToAction = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call - In a real app, this would be a fetch to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Create form submission object with timestamp
+      const submission: FormSubmission = {
+        ...data,
+        timestamp: new Date().toISOString(),
+      };
       
-      console.log('Form submitted:', data);
-      setIsSuccess(true);
+      // Submit to Google Sheets
+      const result = await submitToGoogleSheets(submission);
       
-      toast({
-        title: "Registration successful!",
-        description: "You've been added to our early access list.",
-        variant: "default",
-      });
-      
-      // Reset form after delay
-      setTimeout(() => {
-        form.reset();
-        setIsSuccess(false);
-      }, 3000);
+      if (result) {
+        console.log('Form submitted to Google Sheets:', submission);
+        setIsSuccess(true);
+        
+        toast({
+          title: "Registration successful!",
+          description: "You've been added to our early access list.",
+          variant: "default",
+        });
+        
+        // Reset form after delay
+        setTimeout(() => {
+          form.reset();
+          setIsSuccess(false);
+        }, 3000);
+      } else {
+        throw new Error("Failed to submit to Google Sheets");
+      }
       
     } catch (error) {
       console.error('Error submitting form:', error);
