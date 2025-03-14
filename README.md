@@ -15,7 +15,7 @@
 𝒎𝒂𝒅𝒆 𝒘𝒊𝒕𝒉 ❤️ 𝑻𝒆𝒂𝒎 𝑳𝒖𝒎𝒆𝒏 
 
 
-##Run the server by :
+## Run the server by :
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
