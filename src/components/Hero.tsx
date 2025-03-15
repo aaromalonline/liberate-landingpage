@@ -99,50 +99,91 @@ const Hero = () => {
         {/* Hero image */}
         <div ref={imageContainerRef} className="w-full md:w-1/2 flex justify-center hero-mouse-parallax-container">
           <div className="relative w-full max-w-md hero-mouse-parallax-child transition-all duration-700 delay-300">
-            {/* Abstract representation of Liberate */}
-            <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-liberation-50 to-liberation-100/50">
+            {/* Enhanced visual representation of Liberate */}
+            <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-liberation-50/80 to-blue-100/60">
               <div className="aspect-w-4 aspect-h-3 bg-transparent relative">
-                {/* Abstract neuron-inspired design representing neural interface */}
+                {/* Background gradient layers */}
+                <div className="absolute inset-0 bg-gradient-radial from-liberation-100/90 via-liberation-50/60 to-transparent z-0"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/40 via-liberation-100/30 to-white/20 z-10"></div>
                 
-                {/* Neural network representation */}
+                {/* Main visualization */}
                 <div className="absolute inset-0 flex items-center justify-center z-20">
                   <div className="relative w-full h-full overflow-hidden">
-                    {/* Central node */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-liberation-500/10 flex items-center justify-center z-30 animate-pulse-subtle">
-                      <div className="w-24 h-24 rounded-full bg-liberation-300/30 flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-liberation-500/50 shadow-inner"></div>
+                    {/* Center brain-interface like structure */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center z-30 animate-pulse-subtle">
+                      <div className="w-28 h-28 rounded-full bg-liberation-300/20 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-liberation-400/40 flex items-center justify-center shadow-inner">
+                          <div className="w-8 h-8 rounded-full bg-liberation-500/60 shadow-inner"></div>
+                        </div>
                       </div>
                     </div>
                     
-                    {/* Neural connection lines */}
-                    {[...Array(12)].map((_, i) => (
+                    {/* Neural network and connection visualization */}
+                    {[...Array(16)].map((_, i) => (
                       <div 
                         key={i} 
-                        className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-liberation-300/80 to-transparent z-20"
+                        className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-liberation-300/90 via-blue-300/60 to-transparent z-20"
                         style={{
-                          width: '50%',
-                          transform: `rotate(${i * 30}deg)`,
+                          width: '60%',
+                          transform: `rotate(${i * 22.5}deg)`,
                           transformOrigin: '0 center'
                         }}
                       >
-                        <div className="absolute right-0 w-2 h-2 rounded-full bg-liberation-400/60 animate-pulse-subtle" 
-                          style={{ animationDelay: `${i * 0.2}s` }}></div>
+                        <div className="absolute right-0 w-2 h-2 rounded-full bg-liberation-400/70 animate-pulse-subtle" 
+                          style={{ animationDelay: `${i * 0.15}s` }}></div>
+                        
+                        {/* Additional nodes along neural connections */}
+                        <div className="absolute right-1/3 w-1.5 h-1.5 rounded-full bg-blue-400/60 animate-pulse-subtle" 
+                          style={{ animationDelay: `${i * 0.15 + 0.3}s` }}></div>
+                        
+                        <div className="absolute right-2/3 w-1 h-1 rounded-full bg-liberation-300/50 animate-pulse-subtle" 
+                          style={{ animationDelay: `${i * 0.15 + 0.6}s` }}></div>
                       </div>
                     ))}
                     
-                    {/* Subtle wave patterns representing muscle signals */}
-                    <div className="absolute inset-0 opacity-30" 
+                    {/* Neural pattern wave background */}
+                    <div className="absolute inset-0 opacity-20" 
                       style={{ 
-                        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(99, 102, 241, 0.1) 15px, rgba(99, 102, 241, 0.1) 30px)',
+                        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(99, 102, 241, 0.1) 12px, rgba(99, 102, 241, 0.1) 24px)',
+                        backgroundSize: '100% 100%',
+                        animation: 'moveLines 15s linear infinite'
+                      }}>
+                    </div>
+                    
+                    {/* Cross pattern for brain signal visualization */}
+                    <div className="absolute inset-0 opacity-10" 
+                      style={{ 
+                        backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(79, 148, 212, 0.2) 12px, rgba(79, 148, 212, 0.2) 24px)',
                         backgroundSize: '100% 100%',
                         animation: 'moveLines 20s linear infinite'
                       }}>
                     </div>
+                    
+                    {/* Scattered small nodes representing neural activity */}
+                    {[...Array(20)].map((_, i) => {
+                      const randomSize = 0.5 + Math.random() * 1.5;
+                      const randomX = 15 + Math.random() * 70;
+                      const randomY = 15 + Math.random() * 70;
+                      const randomDelay = Math.random() * 5;
+                      
+                      return (
+                        <div 
+                          key={`node-${i}`}
+                          className="absolute rounded-full bg-liberation-300/80 animate-pulse-subtle"
+                          style={{
+                            width: `${randomSize}px`,
+                            height: `${randomSize}px`,
+                            left: `${randomX}%`,
+                            top: `${randomY}%`,
+                            animationDelay: `${randomDelay}s`
+                          }}
+                        ></div>
+                      );
+                    })}
                   </div>
                 </div>
                 
-                {/* Overlay gradient for better integration */}
+                {/* Overlay gradients for better blending */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-xl z-30"></div>
                 
                 {/* Animated highlight effect */}
@@ -151,8 +192,8 @@ const Hero = () => {
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-liberation-100 filter blur-xl opacity-60 animate-pulse-subtle"></div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-blue-100 filter blur-xl opacity-60 animate-pulse-subtle animation-delay-2000"></div>
+            <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-liberation-100/80 filter blur-2xl opacity-60 animate-pulse-subtle"></div>
+            <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-full bg-blue-100/80 filter blur-2xl opacity-60 animate-pulse-subtle animation-delay-2000"></div>
           </div>
         </div>
       </div>
