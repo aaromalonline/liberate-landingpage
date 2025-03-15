@@ -59,7 +59,7 @@ const Hero = () => {
         {/* Hero content */}
         <div className="w-full md:w-1/2 pt-12 md:pt-20 pb-12 space-y-6 md:space-y-8 transition-all duration-700 delay-100">
           <div className="inline-block py-1 px-3 rounded-full bg-liberation-100 text-liberation-700 text-xs font-medium tracking-wide animate-fade-in">
-            Introducing Liberate
+            Introducing Liberate : ATCS - Adaptive Typing & Control System
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
@@ -68,7 +68,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-600 max-w-lg">
-            Muscle movement detection system that converts subtle muscle activity into control signals, enabling hands-free device control.
+          A muscle-twitch-based communication system that translates subtle muscle movements into control signals through an adaptive typing interface enabling handsfree assistive control & accessibility for people with limited mobility.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
