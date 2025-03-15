@@ -81,9 +81,13 @@ const Hero = () => {
         {/* Hero image */}
         <div ref={imageContainerRef} className="w-full md:w-1/2 flex justify-center hero-mouse-parallax-container">
           <div className="relative w-full max-w-md hero-mouse-parallax-child transition-all duration-700 delay-300">
-            <div className="relative overflow-hidden rounded-lg shadow-elevated">
-              <div className="aspect-w-4 aspect-h-3 bg-gray-100 relative">
-                <img alt="Liberate device being used to control a keyboard interface" loading="lazy" src="/lovable-uploads/8196492f-5fa3-4162-9016-6e8e405d1f2b.jpg" className="w-full h-full rounded-lg object-cover" />
+            <div className="relative overflow-hidden rounded-xl shadow-xl bg-gradient-to-br from-liberation-50 to-white">
+              <div className="aspect-w-4 aspect-h-3 bg-transparent relative">
+                <img alt="Liberate device being used to control a keyboard interface" 
+                     loading="lazy" 
+                     src="/lovable-uploads/8196492f-5fa3-4162-9016-6e8e405d1f2b.jpg" 
+                     className="w-full h-full object-cover rounded-xl shadow-inner transform scale-[1.02]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 rounded-xl"></div>
                 <div className="device-shine"></div>
               </div>
             </div>
