@@ -99,14 +99,54 @@ const Hero = () => {
         {/* Hero image */}
         <div ref={imageContainerRef} className="w-full md:w-1/2 flex justify-center hero-mouse-parallax-container">
           <div className="relative w-full max-w-md hero-mouse-parallax-child transition-all duration-700 delay-300">
-            <div className="relative overflow-hidden rounded-xl shadow-xl bg-gradient-to-br from-liberation-50 to-white">
+            {/* Abstract representation of Liberate */}
+            <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-liberation-50 to-liberation-100/50">
               <div className="aspect-w-4 aspect-h-3 bg-transparent relative">
-                <img alt="Liberate device being used to control a keyboard interface" 
-                     loading="lazy" 
-                     src="/lovable-uploads/8196492f-5fa3-4162-9016-6e8e405d1f2b.jpg" 
-                     className="w-full h-full object-cover rounded-xl shadow-inner transform scale-[1.02]" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 rounded-xl"></div>
-                <div className="device-shine"></div>
+                {/* Abstract neuron-inspired design representing neural interface */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/40 via-liberation-100/30 to-white/20 z-10"></div>
+                
+                {/* Neural network representation */}
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="relative w-full h-full overflow-hidden">
+                    {/* Central node */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-liberation-500/10 flex items-center justify-center z-30 animate-pulse-subtle">
+                      <div className="w-24 h-24 rounded-full bg-liberation-300/30 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-liberation-500/50 shadow-inner"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Neural connection lines */}
+                    {[...Array(12)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-liberation-300/80 to-transparent z-20"
+                        style={{
+                          width: '50%',
+                          transform: `rotate(${i * 30}deg)`,
+                          transformOrigin: '0 center'
+                        }}
+                      >
+                        <div className="absolute right-0 w-2 h-2 rounded-full bg-liberation-400/60 animate-pulse-subtle" 
+                          style={{ animationDelay: `${i * 0.2}s` }}></div>
+                      </div>
+                    ))}
+                    
+                    {/* Subtle wave patterns representing muscle signals */}
+                    <div className="absolute inset-0 opacity-30" 
+                      style={{ 
+                        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(99, 102, 241, 0.1) 15px, rgba(99, 102, 241, 0.1) 30px)',
+                        backgroundSize: '100% 100%',
+                        animation: 'moveLines 20s linear infinite'
+                      }}>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Overlay gradient for better integration */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-xl z-30"></div>
+                
+                {/* Animated highlight effect */}
+                <div className="device-shine z-40"></div>
               </div>
             </div>
             
