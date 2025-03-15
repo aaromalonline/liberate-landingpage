@@ -1,47 +1,36 @@
-
 import { useEffect, useRef } from 'react';
-
-const technologies = [
-  {
-    name: "Python",
-    description: "Powers signal processing and control logic",
-    color: "bg-blue-100 text-blue-800"
-  },
-  {
-    name: "ESP32",
-    description: "Handles sensor data acquisition via I2C",
-    color: "bg-purple-100 text-purple-800"
-  },
-  {
-    name: "ADXL345",
-    description: "Digital accelerometer for movement detection",
-    color: "bg-green-100 text-green-800"
-  },
-  {
-    name: "PyQt5",
-    description: "Creates the desktop application interface",
-    color: "bg-yellow-100 text-yellow-800"
-  },
-  {
-    name: "gTTS",
-    description: "Google's Text-to-Speech for voice synthesis",
-    color: "bg-red-100 text-red-800"
-  }
-];
-
+const technologies = [{
+  name: "Python",
+  description: "Powers signal processing and control logic",
+  color: "bg-blue-100 text-blue-800"
+}, {
+  name: "ESP32",
+  description: "Handles sensor data acquisition via I2C",
+  color: "bg-purple-100 text-purple-800"
+}, {
+  name: "ADXL345",
+  description: "Digital accelerometer for movement detection",
+  color: "bg-green-100 text-green-800"
+}, {
+  name: "PyQt5",
+  description: "Creates the desktop application interface",
+  color: "bg-yellow-100 text-yellow-800"
+}, {
+  name: "gTTS",
+  description: "Google's Text-to-Speech for voice synthesis",
+  color: "bg-red-100 text-red-800"
+}];
 const Technology = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1,
+      threshold: 0.1
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           const elements = entry.target.querySelectorAll('.reveal-on-scroll');
           elements.forEach((el, index) => {
@@ -49,7 +38,6 @@ const Technology = () => {
               el.classList.add('revealed');
             }, 100 * index);
           });
-          
           if (imageRef.current) {
             imageRef.current.classList.add('animate-scale-in');
             imageRef.current.classList.remove('opacity-0', 'scale-95');
@@ -57,39 +45,23 @@ const Technology = () => {
         }
       });
     }, observerOptions);
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-
-  return (
-    <section
-      id="technology"
-      ref={sectionRef}
-      className="py-24 bg-gradient-subtle relative overflow-hidden"
-    >
+  return <section id="technology" ref={sectionRef} className="py-24 bg-gradient-subtle relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Technology image */}
           <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
-            <div
-              ref={imageRef}
-              className="relative max-w-md opacity-0 scale-95 transition-all duration-700"
-            >
+            <div ref={imageRef} className="relative max-w-md opacity-0 scale-95 transition-all duration-700">
               <div className="bg-white rounded-2xl shadow-elevated p-4 overflow-hidden relative">
-                <img
-                  src="https://raw.githubusercontent.com/aaromalonline/liberate/main/docs/imgs/device-visualizer.png"
-                  alt="Liberate device and visualizer interface"
-                  className="rounded-lg w-full"
-                  loading="lazy"
-                />
+                <img alt="Liberate device and visualizer interface" loading="lazy" src="/lovable-uploads/dcbeafa7-4eb2-4426-8a29-3bcbbd105aed.jpg" className="rounded-lg w-full object-cover" />
                 <div className="device-shine"></div>
               </div>
               
@@ -114,14 +86,9 @@ const Technology = () => {
             </p>
             
             <div className="flex flex-wrap gap-3 mb-6 reveal-on-scroll">
-              {technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className={`tech-chip ${tech.color} cursor-default`}
-                >
+              {technologies.map((tech, index) => <span key={index} className={`tech-chip ${tech.color} cursor-default`}>
                   {tech.name}
-                </span>
-              ))}
+                </span>)}
             </div>
             
             <div className="space-y-4 reveal-on-scroll">
@@ -158,8 +125,6 @@ const Technology = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Technology;
