@@ -1,7 +1,12 @@
+
 import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Github } from "lucide-react";
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     // Mouse parallax effect
     const handleMouseMove = (e: MouseEvent) => {
@@ -48,6 +53,7 @@ const Hero = () => {
       }
     };
   }, []);
+  
   return <section ref={heroRef} className="hero-section relative min-h-screen pt-24 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white" id="hero">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center">
         {/* Hero content */}
@@ -75,6 +81,18 @@ const Hero = () => {
                 <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </a>
+          </div>
+          
+          <div className="pt-2">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="text-gray-600 hover:text-liberation-700 border-gray-200 hover:border-liberation-200 bg-white/50 backdrop-blur-sm transition-all"
+              onClick={() => window.open("https://github.com/aaromalonline/liberate", "_blank")}
+            >
+              <Github className="mr-2 h-4 w-4" />
+              View on GitHub
+            </Button>
           </div>
         </div>
         
