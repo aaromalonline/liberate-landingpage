@@ -134,25 +134,25 @@ const Index = () => {
                       <svg className="h-5 w-5 text-liberation-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>Minimally invasive technology that works with subtle muscle movements</span>
+                      <span>Low-Cost & Non-Invasive – Uses cheap, surface sensors—no implants or complex gear</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-liberation-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>Adaptive interface that learns and responds to your unique movement patterns</span>
+                      <span>No Head/Eye/Voice Needed – Works with just subtle muscle twitches</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-liberation-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>Cost-effective hardware design focused on real-world accessibility needs</span>
+                      <span>Smart Typing Interface – Adapts to individual muscle input for communication</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-liberation-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span>Developed by engineers passionate about accessibility and assistive technology</span>
+                      <span>Portable & Easy to Use – Compact, quick to set up, usable anywhere</span>
                     </li>
                   </ul>
                 </div>
