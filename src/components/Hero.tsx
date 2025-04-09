@@ -67,8 +67,8 @@ const Hero = () => {
             <span className="text-liberation-500">Barriers</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 max-w-lg">
-          We are addressing both mobility and communication barriers faced by individuals with severe physical impairments—such as those with ALS (Amyotrophic Lateral Sclerosis), muscular dystrophy, or paralysis—who can only move specific muscle groups, by providing a muscle-twitch-based control system that detects subtle muscle movements and converts them into control signals, enabling hands-free assistive control of assistive devices like wheelchairs and adaptive typing interfaces, thereby restoring independence and accessibility.
+          <p className="text-lg md:text-xl text-gray-600 max-w-lg">&emsp;
+          A muscle-twitch-based control system that translates subtle muscle movements into control signals through an adaptive typing interface enabling handsfree assistive control & accessibility for people with limited mobility.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
