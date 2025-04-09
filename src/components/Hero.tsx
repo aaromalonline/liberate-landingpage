@@ -67,7 +67,7 @@ const Hero = () => {
             <span className="text-liberation-500">Barriers</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 max-w-lg">&emsp;
+          <p className="text-lg md:text-xl text-gray-600 max-w-lg">
           A muscle-twitch-based control system that translates subtle muscle movements into control signals through an adaptive typing interface enabling handsfree assistive control & accessibility for people with limited mobility.
           </p>
           
