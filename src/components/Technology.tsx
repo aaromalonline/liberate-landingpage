@@ -118,7 +118,7 @@ const Technology = () => {
                   Dynamic Keyboard Interface
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  The PyQt5 interface provides a moving highlight bar which spans across the rows of keyboard, allowing selection of rows and keys through muscle twitches.
+                  The PyQt5 interface provides a moving highlight bar which spans across the rows of a adaptive keyboard interface (incl QWERTY, SOS, Mobility, Speak Keys), allowing selection of rows and keys through muscle twitches.
                 </p>
               </div>
             </div>
