@@ -105,7 +105,7 @@ const Index = () => {
               <div className="max-w-3xl mx-auto">
                 <div className="mb-12">
                   <p className="text-gray-700 mb-6">
-                    Liberate is a cutting-edge muscle movement detection system that converts subtle muscle activity into control signals, enhancing accessibility and communication for individuals with limited mobility.
+                    We are addressing both mobility and communication barriers faced by individuals with severe physical impairments—such as those with ALS (Amyotrophic Lateral Sclerosis), muscular dystrophy, or paralysis—who can only move specific muscle groups, by providing a muscle-twitch-based control system that detects subtle muscle movements and converts them into control signals, enabling hands-free assistive control of assistive devices like wheelchairs and adaptive typing interfaces, thereby restoring independence and accessibility.
                   </p>
                   <p className="text-gray-700 mb-6">
                     Built by Team Lumen (Aaromal A & Deeraj P Menon) for the hardware hackathon Buildathon - Hertz'25, Liberate is designed to break down barriers for those with mobility challenges through innovative technology.
