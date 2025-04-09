@@ -115,7 +115,7 @@ const Technology = () => {
               <div className="bg-white rounded-lg p-5 shadow-sm border border-gray-100">
                 <h3 className="text-lg font-medium text-gray-900 mb-2 flex items-center">
                   <span className="w-6 h-6 rounded-full bg-liberation-500 text-white flex items-center justify-center mr-2 text-xs">3</span>
-                  Dynamic Keyboard Interface
+                  Adaptive Keyboard Interface
                 </h3>
                 <p className="text-gray-600 text-sm">
                   The PyQt5 interface provides a moving highlight bar which spans across the rows of a adaptive keyboard interface (incl QWERTY, SOS, Mobility, Speak Keys), allowing selection of rows and keys through muscle twitches.
