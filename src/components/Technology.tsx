@@ -59,9 +59,9 @@ const Technology = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Technology image */}
           <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
-            <div ref={imageRef} className="relative max-w-md opacity-0 scale-95 transition-all duration-700">
-              <div className="bg-white rounded-2xl shadow-elevated p-4 overflow-hidden relative">
-                <img alt="Liberate device and visualizer interface" loading="lazy" src="/lovable-uploads/dcbeafa7-4eb2-4426-8a29-3bcbbd105aed.jpg" className="rounded-lg w-full object-cover" />
+            <div ref={imageRef} className="relative max-w-2xl opacity-0 scale-95 transition-all duration-700 h-full">
+              <div className="overflow-hidden relative h-full">
+                <img alt="Liberate device and visualizer interface" loading="lazy" src="/prjshots/ui.jpg" className="w-full h-full object-cover" />
                 <div className="device-shine"></div>
               </div>
               
