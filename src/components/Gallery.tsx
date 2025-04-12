@@ -20,7 +20,7 @@ const galleryItems: GalleryItem[] = [
     type: 'video',
     src: '/prjshots/liberateatcs-intro.mp4',
     title: 'Liberate:ATCS - Introduction',
-    description: 'Adaptive Typing & Control System'
+    description: 'Prototype Overview'
   },
   {
     type: 'image',
