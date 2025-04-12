@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  const [typedText, setTypedText] = useState('');
+  const fullText = "Freedom Beyond Barriers";
   
   useEffect(() => {
     // Mouse parallax effect
@@ -29,6 +31,17 @@ const Hero = () => {
       imageContainerRef.current.style.transform = `translate3d(${x * -20}px, ${y * -20}px, 0) rotateX(${y * 5}deg) rotateY(${x * -5}deg)`;
     };
 
+    // Typing animation
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100);
+
     // Immediately show hero elements without waiting for intersection
     const showHeroElements = () => {
       if (heroRef.current) {
@@ -50,6 +63,7 @@ const Hero = () => {
       if (heroRef.current) {
         heroRef.current.removeEventListener("mousemove", handleMouseMove);
       }
+      clearInterval(typingInterval);
     };
   }, []);
   
@@ -62,8 +76,10 @@ const Hero = () => {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-            Freedom Beyond <br /> 
-            <span className="text-liberation-500">Barriers</span>
+            <span className="inline-block min-h-[1.5em]">
+              {typedText}
+              <span className="inline-block w-1 h-8 bg-gray-900 animate-pulse ml-1"></span>
+            </span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-600 max-w-lg">

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
@@ -100,7 +99,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-gray-500">
-            &copy; {year} Aaromal A. All rights reserved.
+            &copy; {year} <a href="https://aaromalonline.github.io/" target="_blank" rel="noopener noreferrer" className="hover:text-liberation-600 transition-colors">Aaromal A</a>. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-xs text-gray-500 hover:text-liberation-600 transition-colors">Privacy Policy</a>
