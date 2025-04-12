@@ -163,42 +163,46 @@ const Index = () => {
                   <p className="text-gray-700 text-center mb-8">
                     Built in just 8 hours during Buildathon Hertz'25 at CUSAT, India, Liberate is the result of our passion for creating accessible technology.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
+                  <div className="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-2xl mx-auto">
+                    <div className="flex items-center gap-4 bg-white rounded-xl shadow-sm p-4 w-full sm:w-auto">
                       <img 
                         src="/prjshots/aaromal.jpg" 
                         alt="Aaromal A" 
-                        className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                        className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                       />
-                      <h4 className="text-lg font-semibold mb-2">
-                        <a 
-                          href="https://aaromalonline.github.io/" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-liberation-600 hover:text-liberation-700"
-                        >
-                          Aaromal A
-                        </a>
-                      </h4>
-                      <p className="text-gray-600">Software Developer</p>
+                      <div className="text-left">
+                        <h4 className="text-lg font-semibold">
+                          <a 
+                            href="https://aaromalonline.github.io/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-liberation-600 hover:text-liberation-700"
+                          >
+                            Aaromal A
+                          </a>
+                        </h4>
+                        <p className="text-sm text-gray-600">Software Developer</p>
+                      </div>
                     </div>
-                    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
+                    <div className="flex items-center gap-4 bg-white rounded-xl shadow-sm p-4 w-full sm:w-auto">
                       <img 
                         src="/prjshots/deeraj.jpg" 
                         alt="Deeraj P Menon" 
-                        className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                        className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                       />
-                      <h4 className="text-lg font-semibold mb-2">
-                        <a 
-                          href="https://www.linkedin.com/in/deeraj-p-menon-aa4b5231b/" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-liberation-600 hover:text-liberation-700"
-                        >
-                          Deeraj P Menon
-                        </a>
-                      </h4>
-                      <p className="text-gray-600">Hardware Developer</p>
+                      <div className="text-left">
+                        <h4 className="text-lg font-semibold">
+                          <a 
+                            href="https://www.linkedin.com/in/deeraj-p-menon-aa4b5231b/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-liberation-600 hover:text-liberation-700"
+                          >
+                            Deeraj P Menon
+                          </a>
+                        </h4>
+                        <p className="text-sm text-gray-600">Hardware Developer</p>
+                      </div>
                     </div>
                   </div>
                 </div>
