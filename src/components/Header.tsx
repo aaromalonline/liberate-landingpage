@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { cn } from '../lib/utils';
 
@@ -31,13 +32,9 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#" 
-          className="text-2xl font-medium tracking-tighter transition-opacity duration-300 hover:opacity-80 flex items-center"
+          className="text-2xl font-medium tracking-tighter transition-opacity duration-300 hover:opacity-80"
         >
-          <img 
-            src="/lovable-uploads/88bc860c-c14b-4717-8307-b24d6a496e94.png" 
-            alt="Liberate Logo" 
-            className="h-10 mr-3"
-          />
+          Liberate
         </a>
 
         {/* Desktop navigation */}
