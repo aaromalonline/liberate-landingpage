@@ -18,25 +18,25 @@ interface GalleryItem {
 const galleryItems: GalleryItem[] = [
   {
     type: 'video',
-    src: '/public/prjshots/liberateatcs-intro.mp4',
+    src: '/prjshots/liberateatcs-intro.mp4',
     title: 'Hardware Integration',
-    description: 'Liberate seamlessly connects with existing tech ecosystems for a smooth setup experience'
+    description: 'Liberate:ATCS - Introduction'
   },
   {
     type: 'image',
-    src: '/public/prjshots/ui.jpg',
+    src: '/prjshots/ui.jpg',
     title: 'Adaptive Interface',
     description: 'Our adaptive keyboard interface provides an intuitive experience for users with limited mobility'
   },
   {
     type: 'image',
-    src: '/public/prjshots/product2.jpg',
+    src: '/prjshots/product2.jpg',
     title: 'Sensor Technology',
     description: 'The ADXL345 accelerometer detects subtle muscle movements with high precision'
   },
   {
     type: 'image',
-    src: '/public/prjshots/circuit.jpg',
+    src: '/prjshots/circuit.jpg',
     title: 'Minimal Hardware/Circuit',
     description: 'With just a ADXL345 interfaced with ESP32 through a push button'
   }
