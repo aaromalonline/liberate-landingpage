@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -20,6 +19,7 @@ const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
   interest: z.string({ required_error: 'Please select an area of interest' }),
+  feedback: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -43,10 +43,18 @@ const CallToAction = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call - In a real app, this would be a fetch to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await fetch('https://formspree.io/f/mjkylrkb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
       
-      console.log('Form submitted:', data);
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+      
       setIsSuccess(true);
       
       toast({
@@ -129,7 +137,7 @@ const CallToAction = () => {
               </h2>
               
               <p className="text-gray-600 max-w-xl mx-auto reveal-on-scroll">
-                Be among the first to experience Liberate and help shape the future of accessibility technology. Register for early access and updates.
+                Be among the first to experience Liberate and help shape the future of accessibility technology. Share your feedback so we can improve the product.
               </p>
             </div>
             
@@ -198,6 +206,25 @@ const CallToAction = () => {
                             <option value="research">Research collaboration</option>
                             <option value="investment">Investment opportunity</option>
                           </select>
+                        </FormControl>
+                        <FormMessage className="text-xs mt-1" />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="feedback"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="relative">
+                        <FormControl>
+                          <textarea
+                            placeholder="Any feedback or suggestions? (optional)"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-liberation-500 focus:border-liberation-500 transition-all duration-200 min-h-[100px]"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage className="text-xs mt-1" />
                       </div>
