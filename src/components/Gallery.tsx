@@ -174,6 +174,19 @@ const Gallery = () => {
     return () => clearInterval(interval);
   }, [currentIndex, isVideoPlaying, isInViewport]);
 
+  // Manual navigation handlers with improved mobile support
+  const handlePrevious = () => {
+    if (apiRef.current) {
+      apiRef.current.scrollPrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (apiRef.current) {
+      apiRef.current.scrollNext();
+    }
+  };
+
   return (
     <section id="gallery" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -196,55 +209,90 @@ const Gallery = () => {
           ref={carouselRef} 
           className="transition-all duration-700 ease-out opacity-0 translate-y-10"
         >
-          <Carousel
-            opts={{ 
-              loop: true,
-              align: "center",
-            }}
-            setApi={(api) => { apiRef.current = api; }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {galleryItems.map((item, index) => (
-                <CarouselItem key={index} className="pl-4 basis-full">
-                  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-full flex flex-col">
-                    {item.type === 'image' ? (
-                      <div className="aspect-video relative overflow-hidden">
-                        <img 
-                          src={item.src} 
-                          alt={item.title}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                          loading="lazy"
-                        />
+          <div className="relative">
+            <Carousel
+              opts={{ 
+                loop: true,
+                align: "center",
+              }}
+              setApi={(api) => { apiRef.current = api; }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {galleryItems.map((item, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-full">
+                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-full flex flex-col">
+                      {item.type === 'image' ? (
+                        <div className="aspect-video relative overflow-hidden">
+                          <img 
+                            src={item.src} 
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-video bg-black relative overflow-hidden">
+                          <video 
+                            ref={index === 0 ? videoRef : null}
+                            src={item.src}
+                            muted={true} // Mute all videos to allow autoplay
+                            controls
+                            className="w-full h-full object-cover"
+                            playsInline
+                            preload="metadata"
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      )}
+                      <div className="p-5 flex flex-col flex-grow">
+                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                        <p className="text-gray-600 text-sm flex-grow">{item.description}</p>
                       </div>
-                    ) : (
-                      <div className="aspect-video bg-black relative overflow-hidden">
-                        <video 
-                          ref={index === 0 ? videoRef : null}
-                          src={item.src}
-                          muted={true} // Mute all videos to allow autoplay
-                          controls
-                          className="w-full h-full object-cover"
-                          playsInline
-                          preload="metadata"
-                        >
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    )}
-                    <div className="p-5 flex flex-col flex-grow">
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-gray-600 text-sm flex-grow">{item.description}</p>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center gap-2 mt-8">
-              <CarouselPrevious className="relative static left-auto translate-y-0 mr-2" />
-              <CarouselNext className="relative static right-auto translate-y-0 ml-2" />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+            
+            {/* Custom navigation buttons with better mobile support */}
+            <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-2 md:px-6 transform -translate-y-1/2 pointer-events-none">
+              <button 
+                onClick={handlePrevious}
+                className="bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-2 md:p-3 shadow-md transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-liberation-500"
+                aria-label="Previous slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button 
+                onClick={handleNext}
+                className="bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-2 md:p-3 shadow-md transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-liberation-500"
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
-          </Carousel>
+          </div>
+
+          <div className="flex justify-center gap-4 mt-8">
+            <div className="flex items-center space-x-2">
+              {galleryItems.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => apiRef.current?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentIndex === index ? 'bg-liberation-600 w-4' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
 
           <div className="text-center mt-8">
             <p className="text-sm text-gray-500">
