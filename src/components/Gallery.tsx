@@ -39,6 +39,12 @@ const galleryItems: GalleryItem[] = [
     src: '/prjshots/circuit.jpg',
     title: 'Minimal Hardware/Circuit',
     description: 'With just a ADXL345 interfaced with ESP32 through a push button'
+  },
+  {
+    type: 'image',
+    src: '/prjshots/present.jpg',
+    title: 'Presenting Liberate',
+    description: "We built & demonstrated the prototype in an 8hr hardware hackathon, Buildathon-Hertz25' @ CUSAT, India"
   }
 ];
 
