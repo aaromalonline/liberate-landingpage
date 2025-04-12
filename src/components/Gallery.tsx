@@ -1,5 +1,4 @@
-
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { 
   Carousel, 
   CarouselContent, 
@@ -18,35 +17,38 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
   {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=1200&h=800',
-    title: 'User Interface',
-    description: 'Our adaptive keyboard interface provides an intuitive experience for users with limited mobility'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1200&h=800',
+    type: 'video',
+    src: '/public/prjshots/liberateatcs-intro.mp4',
     title: 'Hardware Integration',
     description: 'Liberate seamlessly connects with existing tech ecosystems for a smooth setup experience'
   },
   {
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200&h=800',
+    src: '/public/prjshots/ui.jpg',
+    title: 'Adaptive Interface',
+    description: 'Our adaptive keyboard interface provides an intuitive experience for users with limited mobility'
+  },
+  {
+    type: 'image',
+    src: '/public/prjshots/product2.jpg',
     title: 'Sensor Technology',
     description: 'The ADXL345 accelerometer detects subtle muscle movements with high precision'
   },
   {
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=1200&h=800',
-    title: 'Accessibility Options',
-    description: 'Configure the system for various mobility needs and preferences'
+    src: '/public/prjshots/circuit.jpg',
+    title: 'Minimal Hardware/Circuit',
+    description: 'With just a ADXL345 interfaced with ESP32 through a push button'
   }
 ];
 
 const Gallery = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const apiRef = useRef<any>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -69,6 +71,11 @@ const Gallery = () => {
             carouselRef.current.classList.add('opacity-100');
             carouselRef.current.classList.remove('opacity-0', 'translate-y-10');
           }
+          
+          // Auto-play video if current slide is video and section is in view
+          if (galleryItems[currentIndex].type === 'video' && videoRef.current) {
+            videoRef.current.play().catch(err => console.log('Video autoplay prevented:', err));
+          }
         }
       });
     }, observerOptions);
@@ -82,18 +89,86 @@ const Gallery = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [currentIndex]);
 
-  // Auto-scroll effect
+  // Handle video events
   useEffect(() => {
-    const interval = setInterval(() => {
+    const handleVideoPlay = () => {
+      setIsVideoPlaying(true);
+    };
+
+    const handleVideoEnded = () => {
+      setIsVideoPlaying(false);
+      // Move to next slide when video ends
       if (apiRef.current) {
         apiRef.current.scrollNext();
+      }
+    };
+
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('play', handleVideoPlay);
+      videoElement.addEventListener('ended', handleVideoEnded);
+      videoElement.addEventListener('pause', () => setIsVideoPlaying(false));
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener('play', handleVideoPlay);
+        videoElement.removeEventListener('ended', handleVideoEnded);
+        videoElement.removeEventListener('pause', () => setIsVideoPlaying(false));
+      }
+    };
+  }, []);
+
+  // Track current slide index
+  useEffect(() => {
+    const handleCarouselChange = () => {
+      if (apiRef.current) {
+        const currentIndex = apiRef.current.selectedScrollSnap();
+        setCurrentIndex(currentIndex);
+
+        // Auto-play video if the current slide is a video
+        if (galleryItems[currentIndex].type === 'video' && videoRef.current) {
+          videoRef.current.currentTime = 0; // Reset video to start
+          videoRef.current.play().catch(err => console.log('Video autoplay prevented:', err));
+        }
+      }
+    };
+
+    if (apiRef.current) {
+      apiRef.current.on("select", handleCarouselChange);
+    }
+
+    return () => {
+      if (apiRef.current) {
+        apiRef.current.off("select", handleCarouselChange);
+      }
+    };
+  }, []);
+
+  // Auto-scroll effect for images only
+  useEffect(() => {
+    // Don't auto-scroll if video is playing
+    if (isVideoPlaying) return;
+    
+    // Don't set up interval if current slide is a video
+    if (galleryItems[currentIndex].type === 'video') return;
+
+    const interval = setInterval(() => {
+      if (apiRef.current) {
+        // Get the next slide index
+        const nextIndex = (currentIndex + 1) % galleryItems.length;
+        
+        // Only auto-scroll if we're not on a video slide
+        if (galleryItems[currentIndex].type !== 'video') {
+          apiRef.current.scrollNext();
+        }
       }
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentIndex, isVideoPlaying]);
 
   return (
     <section id="gallery" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
@@ -139,8 +214,18 @@ const Gallery = () => {
                         />
                       </div>
                     ) : (
-                      <div className="aspect-video bg-black flex items-center justify-center text-white">
-                        <span>Video Content</span>
+                      <div className="aspect-video bg-black relative overflow-hidden">
+                        <video 
+                          ref={index === 0 ? videoRef : null}
+                          src={item.src}
+                          muted={index === 0} // Mute first video to allow autoplay
+                          controls
+                          className="w-full h-full object-cover"
+                          playsInline
+                          preload="metadata"
+                        >
+                          Your browser does not support the video tag.
+                        </video>
                       </div>
                     )}
                     <div className="p-5 flex flex-col flex-grow">
@@ -159,7 +244,9 @@ const Gallery = () => {
 
           <div className="text-center mt-8">
             <p className="text-sm text-gray-500">
-              Images auto-scroll every 5 seconds
+              {galleryItems[currentIndex].type === 'video' 
+                ? 'Video will play automatically' 
+                : 'Images auto-scroll every 5 seconds'}
             </p>
           </div>
         </div>
