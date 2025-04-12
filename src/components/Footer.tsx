@@ -52,28 +52,6 @@ const Footer = () => {
               <li>
                 <a href="https://www.intel.com/content/www/us/en/developer/tools/open/acat/overview.html" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Documentation/Inspiration</a>
               </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Pricing</a>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Resources</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Blog</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Case Studies</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Research</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Support</a>
-              </li>
             </ul>
           </div>
           
@@ -82,16 +60,13 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Company</h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">About</a>
+                <a href="#about" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">About</a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Team</a>
+                <a href="#about" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Team</a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Contact</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Careers</a>
               </li>
             </ul>
           </div>
@@ -101,11 +76,6 @@ const Footer = () => {
           <p className="text-xs text-gray-500">
             &copy; {year} <a href="https://aaromalonline.github.io/" target="_blank" rel="noopener noreferrer" className="hover:text-liberation-600 transition-colors">Aaromal A</a>. All rights reserved.
           </p>
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <a href="#" className="text-xs text-gray-500 hover:text-liberation-600 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-xs text-gray-500 hover:text-liberation-600 transition-colors">Terms of Service</a>
-            <a href="#" className="text-xs text-gray-500 hover:text-liberation-600 transition-colors">Cookie Policy</a>
-          </div>
         </div>
       </div>
     </footer>
