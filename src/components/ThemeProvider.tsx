@@ -55,6 +55,15 @@ export function ThemeProvider({
     root.classList.add(theme);
   }, [theme]);
 
+  // Add an immediate effect to set the initial theme class
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    // Force apply dark mode on initial render
+    const root = window.document.documentElement;
+    root.classList.add("dark");
+  }, []);
+
   const value = {
     theme,
     setTheme: (theme: Theme) => {
