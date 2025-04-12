@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from 'react';
 import { 
   Carousel, 
@@ -7,7 +6,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { GalleryIcon } from 'lucide-react';
+import { ImageIcon } from 'lucide-react';
 
 interface GalleryItem {
   type: 'image' | 'video';
@@ -88,7 +87,7 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
           <div className="inline-flex items-center py-1 px-3 rounded-full bg-liberation-100 text-liberation-700 text-xs font-medium tracking-wide mb-2 reveal-on-scroll">
-            <GalleryIcon className="h-3.5 w-3.5 mr-1" />
+            <ImageIcon className="h-3.5 w-3.5 mr-1" />
             Gallery
           </div>
           
