@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '../lib/utils';
 
@@ -56,14 +55,6 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* CTA button */}
-        <a 
-          href="#contact"
-          className="hidden md:block bg-liberation-500 hover:bg-liberation-600 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out transform hover:scale-105 shadow-sm"
-        >
-          Get Early Access
-        </a>
-
         {/* Mobile menu button */}
         <button 
           className="md:hidden text-gray-700 focus:outline-none"
@@ -109,13 +100,6 @@ const Header = () => {
               {item.name}
             </a>
           ))}
-          <a 
-            href="#contact"
-            className="block bg-liberation-500 hover:bg-liberation-600 text-white px-5 py-2 rounded-lg text-sm font-medium text-center transition-all duration-300 ease-in-out"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Get Early Access
-          </a>
         </div>
       </div>
     </header>
