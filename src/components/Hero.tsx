@@ -71,27 +71,21 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="#contact" className="inline-flex items-center justify-center bg-liberation-500 hover:bg-liberation-600 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-sm transform hover:scale-105 hover:shadow">
-              Get Early Access
-            </a>
+            <Button 
+              variant="default"
+              size="lg"
+              className="bg-liberation-500 hover:bg-liberation-600 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-sm transform hover:scale-105 hover:shadow"
+              onClick={() => window.open("https://github.com/aaromalonline/liberate", "_blank")}
+            >
+              <Github className="mr-2 h-4 w-4" />
+              View on GitHub
+            </Button>
             <a href="#features" className="inline-flex items-center justify-center bg-white text-liberation-600 border border-liberation-200 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:border-liberation-300 hover:bg-liberation-50">
               Learn More
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </a>
-          </div>
-          
-          <div className="pt-2">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="text-gray-600 hover:text-liberation-700 border-gray-200 hover:border-liberation-200 bg-white/50 backdrop-blur-sm transition-all"
-              onClick={() => window.open("https://github.com/aaromalonline/liberate", "_blank")}
-            >
-              <Github className="mr-2 h-4 w-4" />
-              View on GitHub
-            </Button>
           </div>
         </div>
         
