@@ -1,5 +1,4 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -109,7 +108,7 @@
   }
 
   .glass-morph {
-    @apply bg-background/70 backdrop-blur-md bg-opacity-60 border border-border shadow-glass;
+    @apply bg-white/70 backdrop-blur-md bg-opacity-60 border border-gray-200 shadow-glass;
   }
 
   .reveal-on-scroll {
@@ -173,18 +172,3 @@
     @apply px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ease-in-out;
   }
 }
-
-/* Dark mode specific animations and effects */
-.dark .device-shine {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.dark .glass-morph {
-  @apply bg-background/40 backdrop-blur-md border-gray-800/30;
-}
-
