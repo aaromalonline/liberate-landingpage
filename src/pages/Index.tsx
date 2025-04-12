@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -157,6 +156,51 @@ const Index = () => {
                       <span>Portable & Easy to Use – Compact, quick to set up, usable anywhere</span>
                     </li>
                   </ul>
+                </div>
+                
+                <div className="mt-12">
+                  <h3 className="text-xl font-semibold mb-6 text-center">The Team Behind Liberate</h3>
+                  <p className="text-gray-700 text-center mb-8">
+                    Built in just 8 hours during Buildathon Hertz'25 at CUSAT, India, Liberate is the result of our passion for creating accessible technology.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
+                      <img 
+                        src="/prjshots/aaromal.jpg" 
+                        alt="Aaromal A" 
+                        className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                      />
+                      <h4 className="text-lg font-semibold mb-2">
+                        <a 
+                          href="https://aaromalonline.github.io/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-liberation-600 hover:text-liberation-700"
+                        >
+                          Aaromal A
+                        </a>
+                      </h4>
+                      <p className="text-gray-600">Software Developer</p>
+                    </div>
+                    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
+                      <img 
+                        src="/prjshots/deeraj.jpg" 
+                        alt="Deeraj P Menon" 
+                        className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                      />
+                      <h4 className="text-lg font-semibold mb-2">
+                        <a 
+                          href="https://www.linkedin.com/in/deeraj-p-menon-aa4b5231b/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-liberation-600 hover:text-liberation-700"
+                        >
+                          Deeraj P Menon
+                        </a>
+                      </h4>
+                      <p className="text-gray-600">Hardware Developer</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
