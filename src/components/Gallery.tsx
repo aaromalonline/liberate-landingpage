@@ -1,3 +1,4 @@
+
 import { useRef, useEffect } from 'react';
 import { 
   Carousel, 
@@ -45,6 +46,7 @@ const galleryItems: GalleryItem[] = [
 const Gallery = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const apiRef = useRef<any>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -82,6 +84,17 @@ const Gallery = () => {
     };
   }, []);
 
+  // Auto-scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (apiRef.current) {
+        apiRef.current.scrollNext();
+      }
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="gallery" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -107,13 +120,14 @@ const Gallery = () => {
           <Carousel
             opts={{ 
               loop: true,
-              align: "start",
+              align: "center",
             }}
+            setApi={(api) => { apiRef.current = api; }}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
               {galleryItems.map((item, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 basis-full">
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-full flex flex-col">
                     {item.type === 'image' ? (
                       <div className="aspect-video relative overflow-hidden">
@@ -145,7 +159,7 @@ const Gallery = () => {
 
           <div className="text-center mt-8">
             <p className="text-sm text-gray-500">
-              Swipe or use arrows to navigate through the gallery
+              Images auto-scroll every 5 seconds
             </p>
           </div>
         </div>
