@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
+import Gallery from "../components/Gallery";
 import Features from "../components/Features";
 import Technology from "../components/Technology";
 import CallToAction from "../components/CallToAction";
@@ -96,6 +97,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <Gallery />
         <Features />
         <Technology />
         <div id="about">

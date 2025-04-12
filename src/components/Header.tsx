@@ -40,6 +40,7 @@ const Header = () => {
         {/* Desktop navigation */}
         <nav className="hidden md:flex space-x-8">
           {[
+            { name: 'Gallery', id: 'gallery' },
             { name: 'Features', id: 'features' },
             { name: 'Technology', id: 'technology' },
             { name: 'About', id: 'about' },
@@ -93,6 +94,7 @@ const Header = () => {
       >
         <div className="px-6 py-4 space-y-3">
           {[
+            { name: 'Gallery', id: 'gallery' },
             { name: 'Features', id: 'features' },
             { name: 'Technology', id: 'technology' },
             { name: 'About', id: 'about' },
