@@ -94,7 +94,7 @@ const Hero = () => {
               onClick={() => window.open("https://github.com/aaromalonline/liberate", "_blank")}
             >
               <Github className="mr-2 h-4 w-4" />
-              View on GitHub
+              Discover & Support on Github
             </Button>
             <a href="#features" className="inline-flex items-center justify-center bg-white text-liberation-600 border border-liberation-200 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:border-liberation-300 hover:bg-liberation-50">
               Learn More
