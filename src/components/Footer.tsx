@@ -51,7 +51,7 @@ const Footer = () => {
                 <a href="#technology" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Technology</a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Documentation</a>
+                <a href="https://www.intel.com/content/www/us/en/developer/tools/open/acat/overview.html" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Documentation/Inspiration</a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-liberation-600 text-sm transition-colors">Pricing</a>
@@ -100,7 +100,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-gray-500">
-            &copy; {year} Team Lumen. All rights reserved.
+            &copy; {year} Aaromal A. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-xs text-gray-500 hover:text-liberation-600 transition-colors">Privacy Policy</a>

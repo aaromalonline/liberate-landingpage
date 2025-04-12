@@ -255,6 +255,13 @@ const CallToAction = () => {
                 <p className="text-xs text-center text-gray-500 mt-4">
                   By signing up, you agree to our privacy policy and terms of service.
                 </p>
+                
+                <p className="text-sm text-center text-gray-600 mt-6">
+                  Alternatively, you can reach us directly at{' '}
+                  <a href="mailto:aaromalonline@gmail.com" className="text-liberation-600 hover:text-liberation-700 underline">
+                    aaromalonline@gmail.com
+                  </a>
+                </p>
               </form>
             </Form>
           </div>
