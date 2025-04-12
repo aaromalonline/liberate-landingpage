@@ -19,8 +19,8 @@ const galleryItems: GalleryItem[] = [
   {
     type: 'video',
     src: '/prjshots/liberateatcs-intro.mp4',
-    title: 'Hardware Integration',
-    description: 'Liberate:ATCS - Introduction'
+    title: 'Liberate:ATCS - Introduction',
+    description: 'Adaptive Typing & Control System'
   },
   {
     type: 'image',
