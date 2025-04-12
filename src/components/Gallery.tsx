@@ -49,6 +49,7 @@ const Gallery = () => {
   const apiRef = useRef<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isInViewport, setIsInViewport] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -60,6 +61,7 @@ const Gallery = () => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          setIsInViewport(true);
           const elements = entry.target.querySelectorAll('.reveal-on-scroll');
           elements.forEach((el, index) => {
             setTimeout(() => {
@@ -76,6 +78,8 @@ const Gallery = () => {
           if (galleryItems[currentIndex].type === 'video' && videoRef.current) {
             videoRef.current.play().catch(err => console.log('Video autoplay prevented:', err));
           }
+        } else {
+          setIsInViewport(false);
         }
       });
     }, observerOptions);
@@ -119,7 +123,7 @@ const Gallery = () => {
         videoElement.removeEventListener('pause', () => setIsVideoPlaying(false));
       }
     };
-  }, []);
+  }, [videoRef.current]);
 
   // Track current slide index
   useEffect(() => {
@@ -145,30 +149,30 @@ const Gallery = () => {
         apiRef.current.off("select", handleCarouselChange);
       }
     };
-  }, []);
+  }, [apiRef.current]);
 
   // Auto-scroll effect for images only
   useEffect(() => {
-    // Don't auto-scroll if video is playing
-    if (isVideoPlaying) return;
+    // Only auto-scroll if:
+    // 1. Section is in viewport
+    // 2. Video is not playing
+    // 3. Current slide is not a video
+    if (!isInViewport || isVideoPlaying || galleryItems[currentIndex].type === 'video') {
+      return;
+    }
     
-    // Don't set up interval if current slide is a video
-    if (galleryItems[currentIndex].type === 'video') return;
-
     const interval = setInterval(() => {
       if (apiRef.current) {
-        // Get the next slide index
-        const nextIndex = (currentIndex + 1) % galleryItems.length;
+        // Find the next slide that's not a video
+        let nextIndex = (currentIndex + 1) % galleryItems.length;
         
-        // Only auto-scroll if we're not on a video slide
-        if (galleryItems[currentIndex].type !== 'video') {
-          apiRef.current.scrollNext();
-        }
+        // If we want to simply scroll to next regardless of type:
+        apiRef.current.scrollNext();
       }
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [currentIndex, isVideoPlaying]);
+  }, [currentIndex, isVideoPlaying, isInViewport]);
 
   return (
     <section id="gallery" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
@@ -218,7 +222,7 @@ const Gallery = () => {
                         <video 
                           ref={index === 0 ? videoRef : null}
                           src={item.src}
-                          muted={index === 0} // Mute first video to allow autoplay
+                          muted={true} // Mute all videos to allow autoplay
                           controls
                           className="w-full h-full object-cover"
                           playsInline
