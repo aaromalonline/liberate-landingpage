@@ -4,6 +4,8 @@ import { cn } from '../lib/utils';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [starCount, setStarCount] = useState(0);
+  const repoPath = 'aaromalonline/liberate-atcs';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,28 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
+
+  // Fetch GitHub star count
+  useEffect(() => {
+    const fetchStarCount = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${repoPath}`);
+        if (!response.ok) throw new Error('GitHub API request failed');
+        
+        const data = await response.json();
+        setStarCount(data.stargazers_count);
+      } catch (error) {
+        console.error('Error fetching GitHub stars:', error);
+        // Keep the current count if there's an error
+      }
+    };
+
+    fetchStarCount();
+    
+    // Optional: Set up a periodic refresh (e.g., every 5 minutes)
+    const refreshInterval = setInterval(fetchStarCount, 5 * 60 * 1000);
+    return () => clearInterval(refreshInterval);
+  }, [repoPath]);
 
   return (
     <header
@@ -58,7 +82,7 @@ const Header = () => {
 
           {/* GitHub Star Count */}
           <a
-            href="https://github.com/aaromalonline/liberate-atcs"
+            href={`https://github.com/${repoPath}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-[12px] leading-4 font-medium text-gray-700 hover:text-gray-800"
@@ -71,7 +95,7 @@ const Header = () => {
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
               </svg>
               <span>Star</span>
-              <span className="px-1.5 py-0.5 bg-gray-100 rounded-[20px] text-[11px] font-semibold">4</span>
+              <span className="px-1.5 py-0.5 bg-gray-100 rounded-[20px] text-[11px] font-semibold">{starCount}</span>
             </span>
           </a>
         </div>
@@ -124,7 +148,7 @@ const Header = () => {
           
           {/* GitHub Star Count - Mobile */}
           <a
-            href="https://github.com/aaromalonline/liberate-atcs"
+            href={`https://github.com/${repoPath}`}
             target="_blank"
             rel="noopener noreferrer"
             className="block py-2"
@@ -138,7 +162,7 @@ const Header = () => {
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
               </svg>
               <span>Star</span>
-              <span className="px-1.5 py-0.5 bg-gray-100 rounded-[20px] text-[11px] font-semibold">4</span>
+              <span className="px-1.5 py-0.5 bg-gray-100 rounded-[20px] text-[11px] font-semibold">{starCount}</span>
             </span>
           </a>
         </div>
