@@ -106,14 +106,13 @@ const Hero = () => {
             </div>
             
             <div className="sm:px-0 flex sm:w-full">
-              <a 
-                href="/LiberateATCS-Report.pdf" 
-                download="LiberateATCS-Report.pdf"
+              <Button 
+                onClick={() => window.open('/LiberateATCS-Report.pdf', '_blank')}
                 className="inline-flex items-center justify-center bg-liberation-50 text-liberation-700 border border-liberation-300 px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:bg-liberation-100 w-full"
               >
-                <Download className="mr-2 h-4 w-4" />
-                Download Technical Report
-              </a>
+                <FileText className="mr-2 h-4 w-4" />
+                Technical Report
+              </Button>
             </div>
           </div>
         </div>
