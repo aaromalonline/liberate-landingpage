@@ -40,6 +40,12 @@ const galleryItems: GalleryItem[] = [
   },
   {
     type: 'image',
+    src: '/prjshots/protodevice.png',
+    title: 'Device Prototype',
+    description: 'Device prototype with ADXL345 accelerometer, TCRT5000 IR sensor and ESP32'
+  },
+  {
+    type: 'image',
     src: '/prjshots/circuit.jpg',
     title: 'Minimal Hardware/Circuit',
     description: 'With just a ADXL345 interfaced with ESP32 through a push button'
