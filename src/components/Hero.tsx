@@ -106,14 +106,28 @@ const Hero = () => {
             </div>
             
 <div className="sm:px-0 flex sm:w-full">
-  <a
-    href="/LiberateATCS-Report.pdf"
-    download
+  <button
+    onClick={async () => {
+      try {
+        const response = await fetch('/report.pdf');
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'report.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error('Download failed:', err);
+      }
+    }}
     className="inline-flex items-center justify-center bg-liberation-50 text-liberation-700 border border-liberation-300 px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:bg-liberation-100 w-full"
   >
     <FileText className="mr-2 h-4 w-4" />
     Download Technical Report
-  </a>
+  </button>
 </div>
           </div>
         </div>
