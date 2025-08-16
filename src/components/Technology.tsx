@@ -58,7 +58,8 @@ const Technology = () => {
       }
     };
   }, []);
-  return <section id="technology" ref={sectionRef} className="py-24 bg-gradient-subtle relative overflow-hidden">
+  return (
+    <section id="technology" ref={sectionRef} className="py-24 bg-gradient-subtle relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Technology image */}
@@ -85,11 +86,15 @@ const Technology = () => {
               How It Works
             </h2>
             
-            <p className="text-gray-600 reveal-on-scroll">
-              Liberate combines hardware and software technologies to create a seamless experience. The system detects subtle muscle movements and transforms them into precise control signals.
-            </p>
-            <br>
-            <p><b>Input Modules (ADXL345 & TCRT5000 IR) -> Control System (ESP32) -> Adaptive PyQT5 interface (Muscle Keyboard using Python)</b></p>
+<p className="text-gray-600 reveal-on-scroll">
+  Liberate combines hardware and software technologies to create a seamless experience. The system detects subtle muscle movements and transforms them into precise control signals.
+  <br />
+  <br />
+  <b><i>Input Modules (ADXL345 & TCRT5000 IR) -> Control System (ESP32) -> Adaptive PyQT5 interface (Muscle Keyboard using Python)</i></b>
+</p>
+
+            <br />
+            
             
             <div className="flex flex-wrap gap-3 mb-6 reveal-on-scroll">
               {technologies.map((tech, index) => <span key={index} className={`tech-chip ${tech.color} cursor-default`}>
@@ -131,6 +136,7 @@ const Technology = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default Technology;
