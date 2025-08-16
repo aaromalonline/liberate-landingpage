@@ -90,7 +90,7 @@ const Technology = () => {
   Liberate combines hardware and software technologies to create a seamless experience. The system detects subtle muscle movements and transforms them into precise control signals.
   <br />
   <br />
-  <b><i>Input Modules (ADXL345 & TCRT5000 IR) -> Control System (ESP32) -> Adaptive PyQT5 interface (Muscle Keyboard using Python)</i></b>
+  <b><i>Input Modules (ADXL345 & TCRT5000 IR) {'->'} Control System (ESP32) {'->'} Adaptive PyQT5 interface (Muscle Keyboard using Python)</i></b>
 </p>
 
             <br />
