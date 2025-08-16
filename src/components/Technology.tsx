@@ -9,9 +9,13 @@ const technologies = [{
   color: "bg-purple-100 text-purple-800"
 }, {
   name: "ADXL345",
-  description: "Digital accelerometer for movement detection",
-  color: "bg-green-100 text-green-800"
+  description: "Digital accelerometer input module to detect muscle twitch",
+  color: "bg-red-100 text-red-800"
 }, {
+  name: "TCRT5000 IR",
+  description: "IR sensor input module to record muscle twitches",
+  color: "bg-green-100 text-green-800"
+},{
   name: "PyQt5",
   description: "Creates the desktop application interface",
   color: "bg-yellow-100 text-yellow-800"
@@ -84,6 +88,8 @@ const Technology = () => {
             <p className="text-gray-600 reveal-on-scroll">
               Liberate combines hardware and software technologies to create a seamless experience. The system detects subtle muscle movements and transforms them into precise control signals.
             </p>
+            <br>
+            <p><b>Input Modules (ADXL345 & TCRT5000 IR) -> Control System (ESP32) -> Adaptive PyQT5 interface (Muscle Keyboard using Python)</b></p>
             
             <div className="flex flex-wrap gap-3 mb-6 reveal-on-scroll">
               {technologies.map((tech, index) => <span key={index} className={`tech-chip ${tech.color} cursor-default`}>
